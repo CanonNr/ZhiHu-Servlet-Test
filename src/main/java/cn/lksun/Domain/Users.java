@@ -1,4 +1,4 @@
-package cn.lksun.Dao.cn.lksun.Dao;
+package cn.lksun.Dao;
 
 public class Users {
     private int id;
@@ -46,5 +46,5 @@ public class Users {
     public void setLastlogin_time(int lastlogin_time) {
         this.lastlogin_time = lastlogin_time;
     }
-    
+
 }
