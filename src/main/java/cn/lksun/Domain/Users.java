@@ -1,11 +1,11 @@
-package cn.lksun.Dao;
+package cn.lksun.Domain;
 
 public class Users {
     private int id;
     private String username;
     private String password;
     private int create_time;
-    private int lastlogin_time;
+    private int lastly_time;
 
     public int getId() {
         return id;
@@ -39,12 +39,12 @@ public class Users {
         this.create_time = create_time;
     }
 
-    public int getLastlogin_time() {
-        return lastlogin_time;
+    public int getLastly_time() {
+        return lastly_time;
     }
 
-    public void setLastlogin_time(int lastlogin_time) {
-        this.lastlogin_time = lastlogin_time;
+    public void setLastly_time(int lastly_time) {
+        this.lastly_time = lastly_time;
     }
 
 }
