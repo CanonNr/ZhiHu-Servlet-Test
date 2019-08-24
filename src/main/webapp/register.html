@@ -58,18 +58,24 @@
 
 <script>
 
-	var list = [];
+
 	$('#button').click(function () {
-		alert($('#email').val());
+		var list = {};
+		list['email'] = $('#email').val();
+		list['username'] = $('#user').val();
+		list['password'] = $('#password').val();
+		// JSON.stringify(list)
 		$.ajax({
 			//请求方式
-			type : "POST",
+			type : "post",
 			//请求的媒体类型
-			contentType: "application/json;charset=UTF-8",
 			//请求地址
-			url : "./registUserServlet",
+			url : "./api/registUserServlet",
 			//数据，json字符串
-			data : JSON.stringify(list),
+			data :{
+				data:JSON.stringify(list)
+			},
+			dataType : 'json',
 			//请求成功
 			success : function(result) {
 				console.log(result);
