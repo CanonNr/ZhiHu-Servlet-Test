@@ -3,12 +3,14 @@ package cn.lksun.Dao.impl;
 import cn.lksun.Dao.UserDao;
 import cn.lksun.Domain.User;
 import cn.lksun.Util.JdbcUtil;
+import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class UserImpl implements UserDao {
     private JdbcTemplate template = new JdbcTemplate(JdbcUtil.getDataSource());
@@ -23,12 +25,19 @@ public class UserImpl implements UserDao {
     }
 
     @Override
-    public void createUser(User user) {
+    public int createUser(User user) {
 
         String sql = "INSERT into users(username,email,password, create_time) VALUE (?,?,?,?)";
         long time = new Date().getTime();
-        template.update(sql,user.getUsername(),user.getEmail(),user.getPassword(),time);
+        int i = template.update(sql, user.getUsername(), user.getEmail(), user.getPassword(), time);
+        return i;
+    }
 
+    @Override
+    public int count(String username) {
+        String sql = "SELECT count(*) as count FROM users WHERE username= ?";
+        Map<String, Object> count = template.queryForMap(sql,username);
+        return Integer.parseInt(count.get("count").toString());
     }
 
 }

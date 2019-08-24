@@ -78,7 +78,12 @@
 			dataType : 'json',
 			//请求成功
 			success : function(result) {
-				console.log(result);
+				if(!result.flag){
+					alert(result.msg)
+				}else{
+					alert(result.msg);
+					window.location.href = "/login.html";
+				}
 			},
 			//请求失败，包含具体的错误信息
 			error : function(e){
