@@ -3,6 +3,7 @@ package cn.lksun.Domain;
 public class User {
     private int id;
     private String username;
+    private String email;
     private String password;
     private int create_time;
     private int lastly_time;
@@ -47,4 +48,11 @@ public class User {
         this.lastly_time = lastly_time;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
 }
