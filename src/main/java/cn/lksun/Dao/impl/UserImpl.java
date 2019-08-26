@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.util.DigestUtils;
 
 import java.util.Date;
 import java.util.List;
@@ -28,8 +29,9 @@ public class UserImpl implements UserDao {
     public int createUser(User user) {
 
         String sql = "INSERT into users(username,email,password, create_time) VALUE (?,?,?,?)";
+        String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
         long time = new Date().getTime();
-        int i = template.update(sql, user.getUsername(), user.getEmail(), user.getPassword(), time);
+        int i = template.update(sql, user.getUsername(), user.getEmail(), password, time);
         return i;
     }
 
