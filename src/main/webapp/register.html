@@ -36,10 +36,10 @@
 				<div class="group-ipt password1">
 					<input type="password" name="password1" id="password1" class="ipt" placeholder="重复密码" required>
 				</div>
-				<div class="group-ipt verify">
-					<input type="text" name="verify" id="verify" class="ipt" placeholder="输入验证码" required>
-					<img src="http://zrong.me/home/index/imgcode?id=" class="imgcode">
-				</div>
+<!--				<div class="group-ipt verify">-->
+<!--					<input type="text" name="verify" id="verify" class="ipt" placeholder="输入验证码" required>-->
+<!--					<img src="http://zrong.me/home/index/imgcode?id=" class="imgcode">-->
+<!--				</div>-->
 			</div>
 		</div>
 
@@ -64,7 +64,14 @@
 		list['email'] = $('#email').val();
 		list['username'] = $('#user').val();
 		list['password'] = $('#password').val();
-		// JSON.stringify(list)
+		list['password1'] = $('#password1').val();
+		if(list['email'] === '' || list['username'] === '' || list['password']===''){
+			alert('请勿漏填参数');
+			return;
+		} else if(list['password'] !== list['password1']){
+			alert('两次密码不相同');
+			return;
+		}
 		$.ajax({
 			//请求方式
 			type : "post",
