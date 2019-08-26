@@ -64,11 +64,11 @@
 		list['email'] = $('#email').val();
 		list['username'] = $('#user').val();
 		list['password'] = $('#password').val();
-		list['password1'] = $('#password1').val();
+		password1= $('#password1').val();
 		if(list['email'] === '' || list['username'] === '' || list['password']===''){
 			alert('请勿漏填参数');
 			return;
-		} else if(list['password'] !== list['password1']){
+		} else if(list['password'] !== password1){
 			alert('两次密码不相同');
 			return;
 		}

@@ -5,8 +5,8 @@ public class User {
     private String username;
     private String email;
     private String password;
-    private int create_time;
-    private int lastly_time;
+    private String create_time;
+    private String lastly_time;
 
     public int getId() {
         return id;
@@ -24,6 +24,14 @@ public class User {
         this.username = username;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -32,27 +40,23 @@ public class User {
         this.password = password;
     }
 
-    public int getCreate_time() {
+    public String getCreate_time() {
         return create_time;
     }
 
-    public void setCreate_time(int create_time) {
+    public void setCreate_time(String create_time) {
         this.create_time = create_time;
     }
 
-    public int getLastly_time() {
+    public String getLastly_time() {
         return lastly_time;
     }
 
-    public void setLastly_time(int lastly_time) {
+    public void setLastly_time(String lastly_time) {
         this.lastly_time = lastly_time;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+
+
 }

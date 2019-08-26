@@ -4,6 +4,7 @@ import cn.lksun.Dao.UserDao;
 import cn.lksun.Domain.User;
 import cn.lksun.Util.JdbcUtil;
 import org.junit.jupiter.api.Test;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -40,6 +41,23 @@ public class UserImpl implements UserDao {
         String sql = "SELECT count(*) as count FROM users WHERE username= ?";
         Map<String, Object> count = template.queryForMap(sql,username);
         return Integer.parseInt(count.get("count").toString());
+    }
+
+    @Override
+    public User getUserByUsernameAndPassword(User user) {
+        User flag = null;
+        String sql = "SELECT * FROM users WHERE username= ? AND password = ?";
+//        RowMapper<User> mapper = new BeanPropertyRowMapper<>(User.class);
+//        List<User> persons = template.query(sql, mapper,username,password);
+//        Map<String, Object> map = template.queryForMap(sql, username, password);
+        try {
+            String username = user.getUsername();
+            String password = DigestUtils.md5DigestAsHex(user.getPassword().getBytes());
+            flag = template.queryForObject(sql, new BeanPropertyRowMapper<User>(User.class), username, password);
+        } catch (DataAccessException e) {
+
+        }
+        return flag;
     }
 
 }

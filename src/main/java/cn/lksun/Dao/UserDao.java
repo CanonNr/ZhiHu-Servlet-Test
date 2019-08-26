@@ -8,4 +8,6 @@ public interface UserDao {
     public int createUser(User user);
 
     public int count(String username);
+
+    public User getUserByUsernameAndPassword(User user);
 }
