@@ -41,7 +41,6 @@ public class LoginUserServlet extends HttpServlet {
         String s = mapper.writeValueAsString(resultInfo);
         response.setContentType("application/json;charset=utf-8");
         response.getWriter().println(s);
-        Object user1 = request.getSession().getAttribute("user");
         return;
 
 
