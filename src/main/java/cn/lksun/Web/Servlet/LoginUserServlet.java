@@ -2,21 +2,18 @@ package cn.lksun.Web.Servlet;
 
 import cn.lksun.Domain.ResultInfo;
 import cn.lksun.Domain.User;
-import cn.lksun.Service.UserService;
 import cn.lksun.Service.impl.UserServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Map;
 
 @WebServlet("/api/loginUserServlet")
 public class LoginUserServlet extends HttpServlet {
-    protected ResultInfo resultInfo = new ResultInfo();
+    private ResultInfo resultInfo = new ResultInfo();
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String data = request.getParameter("data");
